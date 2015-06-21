@@ -1,0 +1,12 @@
+-- dates_meeting_criteria.inp
+-- Selecting dates whose values meet a condition
+
+open example_db
+
+-- Any logical statement will work with the "which" clause:
+which ex_series lt 2.3
+
+repo ex_series
+
+close all
+exit

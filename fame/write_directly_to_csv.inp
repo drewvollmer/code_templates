@@ -1,0 +1,41 @@
+-- write_directly_to_csv.inp
+-- Exporting Fame data straight to a csv
+
+-- Open databases
+open example_db
+
+-- Designate series to pull in an array
+-/serlist = {series}
+
+-- Write data from all dates
+date *
+-- Or restrict:
+-- date 2jan15 to *
+
+-- Write with 6 digits after the decimal
+deci 6
+
+-- Declare date format to be written to CSV
+image date "<YEARZ><MZ><DZ>"
+-- For FAME-pinnable date formats:
+--image date "<DZ><MTXT><YEARZ>"
+
+-- Obligatory setup to write to a file
+$prnsetup
+
+-- When Fame displays data, it will stagger the display of the series if the buffer is not wide
+-- enough.  It does the same when printing to a CSV, which is problematic when you want to export
+-- a bunch of series.  Setting prnwidth sets a very large buffer width and solves the problem.
+$prnwidth 9999
+
+-- replace NA "."
+-- replace ND "."
+
+$delimiter comma
+$pout serlist, "test_deleteme.csv"
+
+-- Remove "  NA " entries
+!perl -i -pe 's/" *NA"//ig' test_deleteme.csv
+
+close all
+exit

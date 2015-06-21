@@ -1,0 +1,87 @@
+% Hmisc_latex.Rnw
+% Creating a table with the Hmisc package's latex command
+
+\documentclass[landscape]{article}
+\usepackage[landscape]{geometry}
+\usepackage{tabularx,caption,booktabs,subcaption}
+
+\begin{document}
+
+
+% We use labels so that the program can tell us where an error is. Instead of guessing,
+% the compiler will say that there's an error in chunk maketable, for example.
+% results = tex just means that the results are output to LaTeX (as opposed to results = hide)
+% Conveniently, we can set defaults for each chunk with \SweaveOpts:
+\SweaveOpts{echo = FALSE, results = tex}
+% With these defaults, now I just have to label each R chunk:
+<<label=maketable>>=
+
+rm(list = ls())
+library("Hmisc")
+
+## The advantage of Hmisc's latex command is that there is no need for manual LaTeX formatting.
+## Recall that when using xtable, we declared the number of columns and had to manually insert
+## column headers (otherwise we could not have put an \hline between them and the results). Here
+## I use a generic data table, then label its rows and columns as well as groups of rows and
+## columns.
+
+# Create assorted data
+data <- cbind(rnorm(10), runif(10,0,1), rnorm(10), runif(10,0,1), rnorm(10), runif(10,0,1))
+# Round so it doesn't look disgusting, but always show two digits after the decimal
+# Specify that it's for all rows and columns so it doesn't get turned into a vector
+data[,] <- format(round(data[,],2),nsmall=2)
+
+# Pretend that this is regression output. In programming this example I'm going to assume
+# that I know nothing about the number of regressors or models. Set row and column names:
+rownames = c()
+for(i in 1:nrow(data)){
+     rownames = append(rownames, paste("Regressor", i, sep=" "))
+}
+rownames(data) <- rownames
+
+colnames(data) <- rep(c("Coefficient", "p-value"), ncol(data)/2)
+
+# Now we want to group the rows and columns. Making this modular would be a bit contrived
+# since you have to know what the data is to group it correctly (unless you generate some
+# way to tell in your R output, which is totally possible)
+col.group.labels <- c("The Good Model", "The Bad Model", "The Halo Effect Model")
+row.group.labels <- c("The First 4 Regressors", "The Fifth Regressor", "The Last 5 Regressors")
+
+# Assign labels to rows and columns by telling each label how many rows or columns to cover.
+# The start for each label's group is determined by the number of columns the earlier labels
+# use, i.e. c(1,2,3) has label 1 over the first column, label 2 covering 2 columns starting
+# with column 2, and label 3 covering 3 columns starting at column 4.
+col.groupings = c(2,2,2) # easy since each model takes 2 columns
+row.groupings = c(4,1,5)
+
+return(latex(data, # Input the table to be TeXed
+             # Set the file to the empty string if you want the table to get printed
+             # in your current TeX file.  If you aren't using Sweave and still want to
+             # make the table, you can run this command and it'll write to file.tex.
+             file = "", title = "Silly Models",
+             # Set a caption. You can customize caption styles in LaTeX to turn this
+             # into a better looking title. Try the "caption" package in LaTeX.
+             caption = "The output of completely fabricated models",
+             n.cgroup = col.groupings, # These are the groupings we specified
+             cgroup = col.group.labels, # And the labels to be assigned
+             n.rgroup = row.groupings, # Same for rows
+             rgroup = row.group.labels,
+             # Custom font size in format {fontsize}{separationsize} since formatting tables sucks
+             size = c("fontsize{10}{12}\\selectfont"),
+             # You can tell the table that it doesn't need to supply "\begin{table}/\end{table}",
+             # but we want it to so that LaTeX does as little work as possible
+             table.env = TRUE,
+             # Justify columns, all to the right
+             col.just = rep('r',ncol(data)),
+             # Set specific column sizes for formatting
+             #collabel.just = rep(c('p{3.725em}','p{3.72em}','p{4.02em}','p{4.025em}','p{3em}'),3)
+             ))
+
+
+@
+
+
+
+
+
+\end{document}

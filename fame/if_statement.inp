@@ -1,0 +1,12 @@
+-- if_statement.inp
+
+open example_db
+
+if exists(example_series)
+
+   disp "bloop"
+
+end if
+
+close all
+exit

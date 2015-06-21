@@ -1,0 +1,3 @@
+-- create_series.inp
+
+new work'test = series(NA, date)

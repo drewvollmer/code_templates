@@ -1,0 +1,75 @@
+-- manipulate_series_in_loop.inp
+-- Code demonstrating a modular approach to series manipulations
+
+-/file_prefix = "spool/file_prefix-"
+-/series_postfix = "_postfix"
+
+openw example_db
+store example_db
+
+$prnsetup
+$delimiter tab
+$dates random
+
+-- Namelists containing the source and destination series
+-/raw_series = {"raw1", "raw2", "raw3"}
+-/clean_series = {"clean1", "clean2", "clean3"}
+
+loop for current_series in raw_series
+
+-- The name() function converts the namelist entry to a string.  Confusingly,
+-- the string() function does not-- it casts the output of its parameter
+-- as a string.
+-/filename = file_prefix + name(current_series) + series_postfix + ".prn"
+$pin filename
+
+end loop
+
+close all
+
+
+----------------------------------
+-- Copy to a different database --
+----------------------------------
+
+open example_db
+openw new_db
+
+-- Define new series postfix for Fame because it does not allow hyphens in series names
+-/fame_postfix = "_INDEX_PX_LAST"
+
+-- holiday on needed for shift command to work in the loop
+holiday on
+
+loop for ii = 1 to length(raw_series)
+
+date *
+
+
+-- Use the extract() function to get a namelist entry at a certain point, but it
+-- will try and pull the object that the string entry refers to.  Thus we use the
+-- name() function to keep it as a string.
+
+-/series_in_example_db = name(extract(raw_series,ii))+fame_postfix
+-/series_in_new_db = name(extract(clean_series,ii))
+
+-- Now we use the id() function to make Fame read the contents of the variable. For instance,
+-- using example_db'series_in_example_db makes Fame look for a series called series_in_example_db.
+-- Since we want it to read the string stored in a variable of that name, we use id().
+copy example_db'id(series_in_example_db) as id(series_in_new_db) to new_db
+
+-- The values in these series arrive infrequently, such as on a monthly basis, and we want to
+-- assign the previous value for each day until the new one comes in.  The reason for this is
+-- that it's the way it was already done.
+
+which missing(id(series_in_new_db))
+set id(series_in_new_db) = NA
+
+date firstvalue(id(series_in_new_db)) to lastvalue(id(series_in_new_db))
+set id(series_in_new_db) = overlay(id(series_in_new_db), shift(id(series_in_new_db),-1))
+
+end loop
+
+close all
+exit
+

@@ -1,0 +1,22 @@
+%% %b.%e
+%% 
+%% %u %M-%D-%y
+
+\documentclass{}
+
+\begin{document}
+
+
+
+
+<<label=tab1,echo=FALSE,results=tex>>=
+
+
+@ 
+
+
+
+
+
+
+\end{document}

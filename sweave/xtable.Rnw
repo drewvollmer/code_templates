@@ -1,0 +1,62 @@
+% table.Rnw
+% A documented minimal working example of a table in Sweave
+
+% Set up LaTeX document and table
+
+\documentclass[landscape]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{tabularx,caption,booktabs}
+\setlength{\extrarowheight}{2.5pt}
+\pagenumbering{gobble}
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+
+\begin{document}
+
+\begin{table}[htb]
+  \caption*{\textbf{Example Table Title}} \par
+  
+% Parameter here is for 7 columns:
+  \begin{tabularx}{\linewidth}{l*{7}{Y}}
+    \toprule
+
+% Sections of R code begin with <<>>= and end with @
+
+<<label=tab1,echo=FALSE,results=tex>>=
+rm(list=ls(all=TRUE))
+library("xtable")
+library("tis")
+library("fame")
+
+# xtable library needed to make the table
+# tis and fame are for Fame data imports
+
+columnLabels = c("Row Labels","Column 1","Column 2","Column 3", "Column 4","Column 5","Column 6")
+
+rowLabels = c("Bleep","Bloop","Blomp")
+
+dataRow1 = c(rowLabels[1],1,2,3,4,5,6)
+dataRow2 = c(rowLabels[2],7,8,9,10,11,12)
+dataRow3 = c(rowLabels[3],13,14,15,16,17,18)
+
+# Put data together into a single matrix that will be printed in the table
+chart = rbind(columnLabels,dataRow1,dataRow2,dataRow3)
+
+# Make the chart:
+print(xtable(chart,label=NULL),only.contents=TRUE,include.rownames=FALSE,include.colnames=FALSE,hline.after=NULL)
+
+@ 
+
+% Now we're back in LaTeX mode and we can wrap up the table:
+   \bottomrule      
+
+
+  \end{tabularx}
+
+  [1] Footnote 1
+  
+  \end{table}
+\end{document}
+
+
+% Run in bash with R CMD Sweave table.Rnw
+% This generates a .tex file with the table. Compile it as pdflatex --interaction=nonstopmode [RnwFileName].tex

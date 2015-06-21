@@ -1,0 +1,4 @@
+-- Used to open a database at a non-shared location and do so while permitting
+-- more than one user at the same time
+
+open <access shared> "local_db.db" as local

@@ -1,0 +1,11 @@
+-- create_database.inp
+
+create example_db
+close example_db
+
+openw example_db
+
+
+
+close all
+exit

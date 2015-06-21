@@ -1,0 +1,13 @@
+-- pin_dd-mmm-yy.inp
+-- Fame is quite fussy in practice about pinning data with different date
+-- formats, even if it accepts those formats.  For dates in dd-mmm-yy format,
+-- this pin setup works:
+
+freq b
+
+overwrite on
+$prnsetup
+$dates random
+$orientation vertical
+$delimit comma
+ignore on

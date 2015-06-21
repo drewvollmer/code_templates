@@ -1,0 +1,15 @@
+-- conditional_pin.inp
+
+-- Suppose that we have some file and we only want to pin it if it's nonempty. We can use the
+-- "system" function to get the number of lines from a file using a bash command.  This assigns
+-- to a variable, but it has spaces afterwards and is cast as a string, so we use "trim" to remove
+-- spaces and then "number" to cast as a string:
+
+-/lines=number(trim(system("wc -l < testfile.csv")))
+-- Or:
+-/lines=number(trim(system("cat testfile.csv | wc -l")))
+
+-- And then use an if condition:
+if lines gt 1
+   $pin testfile.csv
+end if
