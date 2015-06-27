@@ -1,5 +1,5 @@
 splus/*
-*.tex
+sweave/*.tex
 
 *.asv
 *.aux
