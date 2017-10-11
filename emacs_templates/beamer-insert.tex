@@ -1,0 +1,29 @@
+%% %b
+%%
+%% %U %Y-%m-%d
+
+\documentclass{beamer}
+
+\usepackage{amsfonts} %% for \mathbb command
+\usepackage{amsmath} %% for align
+\usepackage{graphicx} %% for graphics
+\usepackage{cancel} %% for ...
+
+
+\allowdisplaybreaks %% so that aligned equations can be broken across pages
+\newcommand{\E}{\mathrm{E}} %% Expectation operator
+\newcommand{\Var}{\mathrm{Var}} %% Variance operator
+\mathchardef\mhyphen="2D %% Create a hyphen for math mode
+\newcommand*\diff{\mathop{}\!d} %% nicely formatted integral dx
+
+\usetheme{Madrid}
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+\title[Short Title]{Long Title}
+\author[]{}
+\frame{\maketitle}
+
+
+\end{document}

@@ -14,7 +14,7 @@
 
 \begin{table}[htb]
   \caption*{\textbf{Example Table Title}} \par
-  
+
 % Parameter here is for 7 columns:
   \begin{tabularx}{\linewidth}{l*{7}{Y}}
     \toprule
@@ -44,16 +44,16 @@ chart = rbind(columnLabels,dataRow1,dataRow2,dataRow3)
 # Make the chart:
 print(xtable(chart,label=NULL),only.contents=TRUE,include.rownames=FALSE,include.colnames=FALSE,hline.after=NULL)
 
-@ 
+@
 
 % Now we're back in LaTeX mode and we can wrap up the table:
-   \bottomrule      
+   \bottomrule
 
 
   \end{tabularx}
 
   [1] Footnote 1
-  
+
   \end{table}
 \end{document}
 

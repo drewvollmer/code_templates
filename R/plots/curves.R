@@ -1,0 +1,52 @@
+## curves.R
+
+
+frame.lwd = 1.5
+    # Set second line color
+    line2.col = "steelblue"
+
+    # Create plot
+    plot(recent.curve,
+         type = "l",
+         lty = 1,
+         axes = FALSE, # No borders on chart
+         ylab = "",
+         xlab = "xlab",
+         lwd = .7,
+         # set limits manually so axis formatting is correct:
+         ylim = c(min(recent.curve, past.curve, na.rm = TRUE) - .05,
+                  max(recent.curve, past.curve, na.rm = TRUE) + .25),
+         cex.lab = .8)
+    # Add the second line
+    lines(past.curve, lty = 2, col = line2.col)
+
+    # Add y-axes
+    axis(4, las = 2, tck = .02, lwd = 0, lwd.ticks = frame.lwd, cex.axis = .75)
+    axis(2, las = 2, tck = .02, lwd = 0, lwd.ticks = frame.lwd, cex.axis = .75, labels = FALSE)
+
+    # Add x-axis
+    label.locs = c(2, 3, 4, 5, 7, 10)
+    axis(1, tck = .02, lwd = 0, lwd.ticks = frame.lwd, cex.axis = .75, line = -.05,
+         at = (4*label.locs) - 7, labels = as.character(label.locs))
+
+    # y-axis label (adj is -.12 for left axis; 1 for right axis)
+    mtext("ylab", side = 3, line = .2, adj =1, cex = .8, las = 1)
+
+    # Add a legend
+    legend("topleft", c(format(current.date, "%m/%d/%Y"), past.date.label), lty = c(1, 2), bty = "n",
+           cex = .7, col = c("black", line2.col))
+
+    # Add title
+    mtext("title", cex = .9, adj = 0, at = par("usr")[1], line = 1.25)
+
+    # Add note
+    mtext("Note", side = 1, line = 3, cex = .65, adj = 0, at = 0)
+
+
+
+
+### Set up exhibit
+pdf(file = "bkeven_fomc.pdf", width = 8.5, height = 11)
+
+# omi: set outer margins; mai: set margins; mgp: set axis label locations
+par(omi = c(1/2, 1/2, 5/8, 1/4), mai=c(.7, 0.25, .65, .35), mgp = c(1.05, .25, 0))

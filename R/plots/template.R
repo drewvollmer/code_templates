@@ -1,7 +1,7 @@
 
 # Step 2: Plot your data using plot(). Your data should be in a data
 # frame -- do this by using data.frame(). Be sure to indicate axes =
-# FALSE in your plot(). 
+# FALSE in your plot().
 
 #example
 

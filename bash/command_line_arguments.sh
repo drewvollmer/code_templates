@@ -8,3 +8,6 @@ if [[ $# == 2 ]] ; then
     arg1=$1
     arg2=$2
 fi
+
+echo First argument is $arg1
+echo Second argument is $arg2

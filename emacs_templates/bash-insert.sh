@@ -1,6 +1,6 @@
 #! /bin/bash
-# %f
-# 
-# %u %M-%D-%y
+# %b
+#
+# %U %Y-%m-%d
 
 cd `dirname $0`
