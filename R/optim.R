@@ -6,4 +6,8 @@ min.RSS <- function(data, par) {
               with(data, sum((par[1] + par[2] * x - y)^2))
 }
 
+## "dat" is input data stored elsewhere. par gives initial parameters
 result <- optim(par = c(0, 1), min.RSS, data = dat)
+
+## For one-dimensional optimization, it is easier to use optimize:
+optimize(function, interval = c(0, 1)) # searches the interval [0, 1]

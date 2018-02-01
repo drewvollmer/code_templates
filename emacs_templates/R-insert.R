@@ -1,3 +1,5 @@
-# %b
-#
-# %U %Y-%m-%d
+## %b
+##
+## %U %Y-%m-%d
+
+options(stringsAsFactors = FALSE)

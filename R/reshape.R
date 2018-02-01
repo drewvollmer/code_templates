@@ -53,6 +53,14 @@ To reformat this dataset into long form, we will use the reshape function. The a
 
 After sorting by id, we can see that we have five rows per student and their five scores appear in the score variable with the subj variable indicating which test on which the score was measured. For each of the five rows per id, the female, race, ses, schtyp, and prog variables are unchanging.
 
+## Another wide to long: when you have X.1, Y.1, Z.1 variables
+    reshaped.data = reshape(to.reshape, varying = list(grep("numtrans", colnames(to.reshape)),
+                                                       grep("totspent", colnames(to.reshape)),
+                                                       grep("avgprice", colnames(to.reshape))),
+                            idvar = "zone.id", direction = "long")
+
+
+
 We can similarly go from this long form back to our original wide form again using reshape with different arguments (most importantly, direction = "wide"). With timevar, we indicate the variable that will define the multiple measurements per subject. With idvar, we list the variables that should do not vary within subject.
 
     ## Long to wide
