@@ -5,7 +5,7 @@
 set more off
 
 capture log close
-log using %n.log, replace
+log using %n.log
 
 
 

@@ -1,0 +1,23 @@
+% side_by_side_figure.tex
+% Creating a figure with two adjacent images
+% Drew Vollmer 2018-02-27
+
+\documentclass[11pt]{article}
+
+% Load preamble file
+\input{c:/Users/drewv/Documents/code/utilities/tex_preamble.tex}
+
+%%% Necessary package
+\usepackage{subfigure} % for subcaption
+
+
+
+\begin{document}
+
+\begin{figure}
+\centering
+\subfigure[]{\includegraphics[width=70mm]{image1}}
+\subfigure[]{\includegraphics[width=45mm]{image2}}
+\end{figure}
+
+\end{document}

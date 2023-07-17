@@ -55,9 +55,6 @@ spool
 ## LaTeX
 *.lof
 *.lot
-*.nav
-*.toc
-*.snm
 
 ## EMACS
 *~

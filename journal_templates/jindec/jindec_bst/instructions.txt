@@ -1,0 +1,36 @@
+instructions.txt
+----------------
+
+
+0. Download makebst.ins, makebst.dtx from https://ctan.org/tex-archive/macros/latex/contrib/custom-bib
+
+The remaining instructions are taken from the README at CTAN
+
+1. Run TeX (or LaTeX) on makebst.ins (--> makebst.tex) [Note: command prompt on Windows]
+2. Run TeX (or LaTeX) on makebst.tex to start customizing
+     your own .bst file. Select merlin as the master file (default) when
+     asked. (I have other master files for my own purposes.)
+3. Answer the questions that then arise; for merlin, you will also be asked
+     which language support file you want (default is merlin itself, meaning
+     English or the pseudo-language Babel). You will also be asked if you want
+     to add a file defining short-hand designations for various journals; such
+     files are included (physjour.mbs, geojour.mbs, photjour.mbs) for physics
+     geophysics, and optics journals, but you could create your own.
+4. The menus that appear may not be informative enough for you. More
+     information can be obtained by reading the documentation (on the options)
+     contained in the .mbs files themselves. This documentation can be printed
+     out by running LaTeX on the .mbs files.
+5. The makebst program only produces a docstrip batch job to generate the .bst
+     file. The last question it asks is whether that job should be run right
+     away. You can always run it again yourself by running TeX or LaTeX on
+     this .dbj file. (The .dbj file can also be manually edited if you want to
+     play around with the various options it includes.)
+
+
+This reference is also useful:
+https://www.blopig.com/blog/2013/02/how-to-make-a-custom-latex-bibliography-style/
+
+
+If you botch it, you can edit the dbj file.  Just comment the wrongly
+selected option and uncomment the desired option (defaults are not
+commented by default).  Then latex [file].dbj.

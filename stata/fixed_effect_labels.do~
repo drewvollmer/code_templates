@@ -1,0 +1,12 @@
+/* fixed_effect_labels.do */
+/* */
+/* Drew Vollmer 2020-04-09 */
+
+set more off
+
+capture log close
+log using fixed_effect_labels.log, replace
+
+
+
+log close

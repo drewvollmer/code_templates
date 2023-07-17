@@ -1,0 +1,31 @@
+% apxproof_and_appendix.tex
+%
+% Drew Vollmer 2020-04-17
+
+\documentclass[11pt]{article}
+
+% Load preamble file
+\input{c:/Users/drewv/Documents/code/utilities/tex_preamble.tex}
+
+\title{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+
+\appendix
+
+\input{appendix_estimation.tex}
+
+% Change apxproof appendix counter
+% Note: this required a small modification to apxproof.sty. I added a new command, appendixnumbering,
+% that works similarly to appendixprelim.  Numbering couldn't be done in appendixprelim because it
+% precedes an \appendix statement.
+% C:/texlive/2017/texmf-dist/tex/latex/apxproof/apxproof.sty
+\renewcommand{\appendixnumbering}{\setcounter{section}{1}}
+
+
+\end{document}

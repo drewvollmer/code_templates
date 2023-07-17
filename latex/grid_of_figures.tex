@@ -1,0 +1,32 @@
+% grid_of_figures.tex
+% Drew Vollmer 2020-06-08
+
+\usepackage{subfig} % for subfloat
+
+\begin{figure}[h]
+  \centering
+
+  \makebox[\textwidth][c]{
+    \subfloat[][No controls]{
+      \includegraphics[scale=.2]{../../regressions/graphics/rate_effect_paths/2018/simple_model_sysprice_none.png}
+    }
+    \subfloat[][LI FE]{
+      \includegraphics[scale=.2]{../../regressions/graphics/rate_effect_paths/2018/simple_model_sysprice_life.png}
+    }
+  }
+
+  \qquad
+
+  \makebox[\textwidth][c]{
+    \subfloat[][Imports, LI FE]{
+      \includegraphics[scale=.2]{../../regressions/graphics/rate_effect_paths/2018/simple_model_sysprice_ilife.png}
+    }
+    \subfloat[][IV LI FE]{
+      \includegraphics[scale=.2]{../../regressions/graphics/rate_effect_paths/2018/simple_model_sysprice_ivlife.png}
+    }
+  }
+
+  \caption{System price models: $\beta_t$ coefficients from estimated
+    versions of equation (\ref{eq:simple-rate-eqm}).}
+  \label{fig:sprice-effect-2018-simple}
+\end{figure}

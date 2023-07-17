@@ -1,10 +1,8 @@
 %% %b
 %%
-%% %U %Y-%m-%d
+%% %U %m-%d-%Y
 
 \documentclass[11pt]{article}
-
-\usepackage{Sweave}
 
 %% Load preamble file
 \input{c:/Users/drewv/Documents/code/utilities/tex_preamble.tex}
@@ -13,21 +11,7 @@
 \date{\today}
 
 \begin{document}
-\SweaveOpts{concordance=TRUE}
 
 \maketitle
-
-
-
-
-<<label=tab1,echo=FALSE,results=tex>>=
-
-
-@
-
-
-
-
-
 
 \end{document}

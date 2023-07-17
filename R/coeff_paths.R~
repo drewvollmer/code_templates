@@ -1,0 +1,5 @@
+## coeff_paths.R
+## How to plot a time-series of coefficients
+## Drew Vollmer 2020-02-12
+
+options(stringsAsFactors = FALSE)

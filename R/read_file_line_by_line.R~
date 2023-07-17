@@ -1,0 +1,5 @@
+## read_file_line_by_line.R
+##
+## Drew Vollmer 2019-12-04
+
+options(stringsAsFactors = FALSE)

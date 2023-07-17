@@ -1,0 +1,41 @@
+% side_by_side_figure.tex
+% Creating a figure with two adjacent images
+% Drew Vollmer 2018-02-27
+
+\documentclass[11pt]{article}
+
+% Load preamble file
+\input{c:/Users/drewv/Documents/code/utilities/tex_preamble.tex}
+
+%%% Necessary package
+\usepackage{subfig} % for subcaption
+
+
+
+\begin{document}
+
+\begin{figure}
+\centering
+\subfigure[]{\includegraphics[width=70mm]{image1}}
+\subfigure[]{\includegraphics[width=45mm]{image2}}
+\end{figure}
+
+
+
+% Or, do it vertically
+\begin{figure}
+  \centering
+  \subfloat[][]{
+    \includegraphics[scale=.25]{tables_graphics/sale_type_fb.png}
+  }
+  \qquad
+  \subfloat[][]{
+    \includegraphics[scale=.25]{tables_graphics/sale_type_mbb.png}
+  }
+  \caption{Sale types and volumes by quality.}
+  \label{fig:pm-sale-types}
+\end{figure}
+
+
+
+\end{document}

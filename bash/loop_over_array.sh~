@@ -23,8 +23,3 @@ for name in *copy*-17*csv
 do
     echo $name
 done
-
-for name in *conflicted*csv
-do
-mv "$name" "${name% (*}".csv
-done

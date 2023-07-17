@@ -20,7 +20,6 @@
 
 \usetheme{Madrid}
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{caption}[numbered] % Figure numbers
 
 \begin{document}
 

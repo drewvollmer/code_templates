@@ -1,0 +1,24 @@
+% too_wide_reg_table.tex
+%
+% Drew Vollmer 2020-07-27
+
+\documentclass[11pt]{article}
+
+% Load preamble file
+\input{c:/Users/drewv/Documents/code/utilities/tex_preamble.tex}
+
+
+\begin{document}
+
+\begin{landscape}
+  \begin{table}
+    \caption{Observations are weighted by quarterly installed
+      capacity.}
+    \makebox[\textwidth][c]{\resizebox{1.5\textwidth}{!}{
+      \input{../regressions/factory_gate_output2.tex}}}
+    \label{fig:fg-results-2}
+  \end{table}
+\end{landscape}
+
+
+\end{document}

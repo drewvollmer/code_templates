@@ -1,0 +1,5 @@
+## ggplot.R
+## An example of ggplot syntax
+## Drew Vollmer 2019-11-19
+
+options(stringsAsFactors = FALSE)

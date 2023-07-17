@@ -1,0 +1,19 @@
+(TeX-add-style-hook
+ "center_too_wide_graphic"
+ (lambda ()
+   (TeX-add-to-alist 'LaTeX-provided-class-options
+                     '(("article" "11pt")))
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
+   (TeX-run-style-hooks
+    "latex2e"
+    "c:/Users/drewv/Documents/code/utilities/tex_preamble"
+    "panel_brand_effects"
+    "article"
+    "art11")
+   (LaTeX-add-labels
+    "panel-effects"))
+ :latex)
+

@@ -6,7 +6,7 @@
 
 \usepackage{Sweave}
 
-%% Load preamble file
+% Load preamble file
 \input{c:/Users/drewv/Documents/code/utilities/tex_preamble.tex}
 
 \title{}

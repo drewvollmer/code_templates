@@ -1,0 +1,17 @@
+## overlaid_histograms.R
+## Drew Vollmer 2019-07-15
+
+options(stringsAsFactors = FALSE)
+
+library("ggplot2")
+
+first.obs = data.frame("earliest.time.to.event" = runif(100), "unsold" = as.logical(round(runif(100))))
+
+ggplot(first.obs, aes(x = earliest.time.to.event, fill = unsold)) + geom_histogram(alpha = .2, position = "identity")
+
+
+
+## With different data frames
+ggplot(data[ data$price <= 200, ], aes(price, weight = purch.prob2*block.weight, y = ..density..)) +
+    geom_histogram(fill = "red", alpha = 0.2) +
+    geom_histogram(data = data[ data$num.trans == 2 & data$price <= 200, ], aes(price, y = ..density..), fill = "blue", alpha = 0.2)

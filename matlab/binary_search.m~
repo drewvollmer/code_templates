@@ -1,0 +1,6 @@
+% binary_search.m
+% A routine returning the
+% Drew Vollmer 2019-05-07
+
+clear;
+clc;

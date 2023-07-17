@@ -1,0 +1,11 @@
+## ddply.R
+## Used to aggregate different columns by different functions
+## Drew Vollmer 2019-12-09
+
+options(stringsAsFactors = FALSE)
+
+library("plyr")
+
+revenue.fees = ddply(scrape, .(EventName, Sport),
+                     function(x) data.frame("Revenue" = sum(x$price*x$num.trans*x$prob.strat),
+                                            "Fees" = sum(x$fee*x$num.trans*x$prob.strat)))

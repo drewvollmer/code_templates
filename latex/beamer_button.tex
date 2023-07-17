@@ -1,0 +1,34 @@
+% beamer_button.tex
+%
+% Drew Vollmer 2019-07-08
+
+\documentclass[11pt]{article}
+
+% Load preamble file
+\input{c:/Users/drewv/Documents/code/utilities/tex_preamble.tex}
+
+\title{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{frame}
+  \frametitle{Value Shocks}
+  \label{back-to-first-slide}
+
+  \hyperlink{button-to-this-slide}{\beamerbutton{Press This Button}}
+
+\end{frame}
+
+\begin{frame}
+
+  \label{button-to-this-slide}
+
+    \hyperlink{back-to-first-slide}{\beamerbutton{Back}}
+
+\end{frame}
+
+\end{document}

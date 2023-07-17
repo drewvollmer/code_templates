@@ -1,0 +1,28 @@
+% landscape_table.tex
+% Drew Vollmer 2020-07-01
+
+\documentclass[11pt]{article}
+
+% Load preamble file
+\input{c:/Users/drewv/Documents/code/utilities/tex_preamble.tex}
+\usepackage{pdflscape} % for landscape environment
+
+\title{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+\begin{landscape}
+  \begin{table}
+    \caption{Empirical results for equation
+      (\ref{eq:factory-gate-prices-est}).}
+    \makebox[\textwidth][c]{\input{../regressions/factory_gate_output.tex}}
+    \label{fig:fg-results}
+  \end{table}
+\end{landscape}
+
+
+\end{document}
